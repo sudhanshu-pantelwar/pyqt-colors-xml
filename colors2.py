@@ -33,7 +33,9 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.resize(400, 300)
+        Dialog.showFullScreen()
+        Dialog.setWindowState(QtCore.Qt.WindowMaximized)
+        # Dialog.resize(400, 300)
         self.gridLayout = QtGui.QGridLayout(Dialog)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -97,8 +99,10 @@ def main():
     app = QtGui.QApplication(sys.argv)
     Dialog = QtGui.QDialog()
     ui = Ui_Dialog()
+
     ui.setupUi(Dialog)
-    Dialog.show()
+    # Dialog.show()
+    Dialog.showMaximized()
     timer = QtCore.QTimer()
     timer.timeout.connect(update_label)
     timer.start(3000)
